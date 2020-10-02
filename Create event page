@@ -7,10 +7,11 @@
 
 
 <div class="header">
-<a href="#default" class="logo">UC tserver</a>
+<a href="Events.php" class="logo">UC tserver</a>
 <div class="header-left">
-    <a class="active" href="#home">Event</a>
-    <a href="#contact">Create Event</a>
+    <a href = "Events.php">Events</a>
+    <a href= "Create_event.php">Create Event</a>
+    <a href = "Search.php"> Search </a>
     <a href="#about">Sign out</a>
 </div>
 </div>
@@ -54,6 +55,7 @@
     }
 
 
+
     /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
     @media screen and (max-width: 500px) {
         .header a {
@@ -67,6 +69,15 @@
     }
 </style>
 
+<?php
+$mysqli = new mysqli("132.181.143.31","mhp47","Pnxr367_","INFO263_mhp47_tserver");
+if ($mysqli->connect_error) {
+    echo $mysqli->connect_error;
+}
+$resultCluster = mysqli_query($mysqli, "SELECT cluster_name FROM vw_front_event");
+$resultDate = mysqli_query($mysqli, "SELECT date FROM vw_front_event");
+?>
+
 <h1> Create new events</h1>
 <div class = "Name">
     <div class="col-md-6 col-sm-12">
@@ -76,17 +87,44 @@
                     <label>Event Title</label>
                     <input type="text" class="form-control" placeholder="Event Title">
                 </div>
+
+                <div class="form-event">
+                    <label>Course</label>
+                    <select name="Course">
+                        <?php
+                        while($col=mysqli_fetch_assoc($resultCluster)){
+                            $course_code = $col['cluster_name'];
+                            echo "<option value='".$course_code."'>".$course_code."</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+
                 <div class="form-event">
                     <label>Room ID</label>
                     <input type="text" class="form-control" placeholder="Room ID">
                 </div>
+
                 <div class="form-event">
                     <label>Event ID</label>
                     <input type="text" class="form-control" placeholder="Event ID">
                 </div>
+
                 <div class="form-event">
-                    <label>Event Date</label>
-                    <input type="date" class="form-control" placeholder="Event Title">
+                    <label>Date</label>
+                    <select name="Course">
+                        <?php
+                        while($col=mysqli_fetch_assoc($resultDate)){
+                            $event_date = $col['date'];
+                            echo "<option value='".$event_date."'>".$event_date."</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class = "form-event">
+                    <label>Event Description</label>
+                    <input type="text" class="form-control" placeholder="Event Title">
                 </div>
                 <button type="submit" class="btn btn-black">Create</button>
             </form>
