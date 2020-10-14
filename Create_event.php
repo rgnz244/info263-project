@@ -8,8 +8,14 @@ $mysqli = new mysqli("132.181.143.31","mhp47","Pnxr367_","INFO263_mhp47_tserver"
 if ($mysqli->connect_error) {
     echo $mysqli->connect_error;
 }
-$resultCluster = mysqli_query($mysqli, "SELECT cluster_name FROM front_cluster");
-$resultRooms = mysqli_query($mysqli, "SELECT room_name FROM front_room");
+
+
+$cluster_query = "CALL show_clusters()";
+$resultCluster = $mysqli->query($cluster_query);
+
+$room_query = "CALL show_rooms()";
+$resultRooms = $mysqli->query($room_query);
+
 
 
 ?>
@@ -19,12 +25,7 @@ $resultRooms = mysqli_query($mysqli, "SELECT room_name FROM front_room");
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
-<?php
-/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $course_code = select_item($_POST["name"]);
-    $room_code = select_item($_POST["email"]);
-}*/
-?>
+
 
 <div class = "Name">
     <div class="col-md-6 col-sm-12">
@@ -68,32 +69,8 @@ $resultRooms = mysqli_query($mysqli, "SELECT room_name FROM front_room");
 </div>
 
 
-<?php
-/*if(isset($_POST['submit'])){
-    if(!empty($_POST['Courses'])){
-        $selectedCourse = $_POST['Courses'];
-        //echo "<h2>Event successfully added</h2>";
-        echo "Event title:". $selectedCourse;
-        //echo "Room:" .$selected;
-        }
-    else{
-        echo "Please select all the information.";
-    }
-}*/
-function showDate($date){
-    if(isset($_POST['submit'])){
-        if(!empty($_POST['event-date'])){
-            $date=date('Y-m-d',strtotime($_POST['event-date']));
-            echo "Date: ".$date;
-        }
-    }
-    else{
-        echo"Please select a date";
-    }
-}
 
 
-?>
 
 
 </html>
