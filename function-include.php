@@ -74,7 +74,7 @@ function createUsers($conn, $username, $email, $password){
         header("location: http://localhost:8000/INFO263%20Group%20Project/signup.php?error=stmtfailed");
         exit();
     }
-    //Hasing password
+    //Hashing password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     mysqli_stmt_bind_param($stmt,"sss",$username, $email, $hashedPassword);
@@ -116,3 +116,21 @@ function userLogin($conn, $username, $password){
         }
     }
 }
+
+function create_event($conn, $event_name)
+{
+    $sql = "INSERT INTO INFO263_mhp47_tserver.front_event (event_name, status)  VALUES (?,?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt,$sql)){
+        exit();
+    }
+
+    $status = 1;
+    mysqli_stmt_bind_param($stmt,"sd", $event_name, $status);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    exit();
+
+}
+
+?>
