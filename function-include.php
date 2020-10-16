@@ -45,7 +45,7 @@ function passwordMatch($password,$passwordConfirm){
 }
 
 function usernameExists($conn,$username,$email){ //$conn established in config.php
-    $sql = "SELECT * FROM INFO263_mhp47_tserver.users WHERE username = ? OR email= ?;";
+    $sql = "CALL username_exists(?, ?)";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         header("location: http://localhost:8000/INFO263%20Group%20Project/signup.php?error=stmtfailed");
@@ -69,9 +69,7 @@ function usernameExists($conn,$username,$email){ //$conn established in config.p
 
 function createUsers($conn, $username, $email, $password){
     $sql = "CALL add_user(?, ? ,?)";
-
     $stmt = mysqli_stmt_init($conn);
-
 
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: http://localhost:8000/INFO263%20Group%20Project/signup.php?error=stmtfailed");
@@ -122,7 +120,7 @@ function userLogin($conn, $username, $password){
 
 function create_event($conn, $event_name)
 {
-    $sql = "INSERT INTO INFO263_mhp47_tserver.front_event (event_name, status)  VALUES (?,?);";
+    $sql = "CALL add_event(?, ?)";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt,$sql)){
         exit();
