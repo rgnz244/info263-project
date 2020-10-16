@@ -68,9 +68,12 @@ function usernameExists($conn,$username,$email){ //$conn established in config.p
 }
 
 function createUsers($conn, $username, $email, $password){
-    $sql = "INSERT INTO INFO263_mhp47_tserver.users (username, email, password) VALUES (?, ?, ?);";
+    $sql = "CALL add_user(?, ? ,?)";
+
     $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt,$sql)){
+
+
+    if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: http://localhost:8000/INFO263%20Group%20Project/signup.php?error=stmtfailed");
         exit();
     }
