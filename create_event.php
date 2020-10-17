@@ -1,19 +1,17 @@
 
 <?php
 //Header and navigation panel
-include "Header.php";
-require_once "function-include.php";
+include "header.php";
+require_once "functions.php";
 require_once "config.php";
-
 
 $result_cluster = mysqli_query($conn, "SELECT cluster_name FROM front_cluster;");
 $result_rooms = mysqli_query($conn, "SELECT room_name FROM front_room ORDER BY room_name");
 
-
 ?>
 
 <title>Creat Event</title>
-<h1> Create new events</h1>
+<h1> Create a new event</h1>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
@@ -69,28 +67,10 @@ $result_rooms = mysqli_query($conn, "SELECT room_name FROM front_room ORDER BY r
     </div>
 </div>
 
-<?php
-
-
-function create_event($conn, $event_name)
-{
-    $sql = "INSERT INTO INFO263_mhp47_tserver.front_event (event_name, status)  VALUES (?,?);";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt,$sql)){
-        exit();
+<style>
+    h1 {
+        margin-top: 14px;
+        margin-left: 14px;
     }
-
-    $status = 1;
-    mysqli_stmt_bind_param($stmt,"sd", $event_name, $status);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    exit();
-
-}
-
-?>
-
-
-
-
+</style>
 </html>

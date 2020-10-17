@@ -9,13 +9,12 @@
 <title>Signup</title>
 <div class="sidenav">
     <div class="login-main-text">
-        <h2>UC tserver Signup</h2>
-        <p>Enter your information here to gain access</p>
+        <h2>UC tserver<br>Sign Up</h2>
+        <p>Please enter your username, email, and password.</p>
     </div>
 
     <div class="sub-text">
-        <h2>Already had an account?</h2>
-        <p>Sign in here</p>
+        <h2>Already have an account?</h2>
         <button id="redirectBtn" class="btn-redirect" name="signin-redirect" class="button" >Sign in</button>
         <script type="text/javascript">
             document.getElementById("redirectBtn").onclick=function(){
@@ -29,7 +28,7 @@
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="signup-form">
-            <form method="post" action="signup-include.php">
+            <form method="post" action="signup-functions.php">
                 <div class="form-group">
                     <label>Username</label>
                     <input type="text" class="form-control" placeholder="Enter Username" value="" name = "username">
@@ -129,8 +128,8 @@
             left: 0;
         }
 
-        .login-form{
-            margin-top: 80%;
+        .signup-form{
+            margin-top: 50%;
         }
     }
 

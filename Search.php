@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang = "en">
 
@@ -9,17 +5,16 @@ session_start();
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<title>Creat new Event</title>
+
 <div class="header">
     <a href="events.php" class="logo">UC tserver</a>
     <div class="header-left">
         <a href = "events.php">Events</a>
-        <a href= "Create_event.php">Create Event</a>
+        <a href= "create_event.php">Create Event</a>
         <a href = "search.php"> Search </a>
-        <a href="logout.php">Sign out</a>
+        <a href="#about">Sign out</a>
     </div>
 </div>
-
 
 <style>
     /* Style the header with a grey background and some padding */
@@ -73,4 +68,15 @@ session_start();
         }
     }
 </style>
+
+
+<h1>Search</h1>
+<div class = "Search">
+    <div class="col-md-6 col-sm-12">
+        <div class = "Search">
+            <form>
+                <div class="Enter keyword">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+
 

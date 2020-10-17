@@ -8,12 +8,12 @@
 
 <div class="sidenav">
     <div class="login-main-text">
-        <h2>UC tserver Login page</h2>
-        <p>Login from here to access.</p>
+        <h2>UC tserver Login</h2>
+        <p>Please enter your username and password.</p>
     </div>
 
     <div class="redirect-text">
-        <h2>Sign up here</h2>
+        <h2>Don't have an account?</h2>
         <button class="redirect-btn" type="button" name="btn-redirect" id="redirectBtn">Register</button>
         <script type="text/javascript">
             document.getElementById("redirectBtn").onclick=function(){
@@ -26,10 +26,10 @@
 <div class="main">
     <div class="col-md-6 col-sm-12">
         <div class="login-form">
-            <form method="post"  action="login-include.php">
+            <form method="post"  action="login-functions.php">
                 <div class="form-group">
-                    <label>User Name</label>
-                    <input type="text" class="form-control" placeholder="User Name" value="" name = "username">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Username" value="" name = "username">
                 </div>
 
                 <div class="form-group">
@@ -43,10 +43,10 @@
             <?php
             if(isset($_GET["error"])){
                 if($_GET["error"]=="emptyfields"){
-                    echo "<p>Please fill in all required fields</p>";
+                    echo "<p>Please fill in all required fields.</p>";
                 }
                 elseif($_GET["error"]=="invalidlogin"){
-                    echo "<p>Invalid login information</p>";
+                    echo "<p>Invalid login information.</p>";
                 }
             }
             ?>
@@ -104,7 +104,7 @@
         }
 
         .login-form{
-            margin-top: 80%;
+            margin-top: 50%;
         }
     }
 

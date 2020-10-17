@@ -2,7 +2,7 @@
 
 if (isset($_POST['submit-signup'])){
     require_once "config.php";
-    require_once "function-include.php";
+    require_once "functions.php";
 
     $username = $_POST['username'];
     $email=$_POST['email'];
