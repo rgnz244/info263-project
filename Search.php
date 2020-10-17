@@ -67,6 +67,12 @@
             float: none;
         }
     }
+
+    h1 {
+        margin-top: 14px;
+        margin-left: 14px;
+    }
+
 </style>
 
 
